@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: direct-deployment
+  labels:
+    app: direct-app
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: direct-app
+  template:
+    metadata:
+      labels:
+        app: direct-app
+    spec:
+      containers:
+        - name: direct-app
+          image: ricardolnx/directtv:1.0
+          ports:
+            - containerPort: 80
